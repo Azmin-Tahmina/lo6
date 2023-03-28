@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/*
+    File:   menu.css
+    Author: Michael Grzesina (cst000)
+    Date:   3/26/2019
+    Purpose: Display drop-down menus at the top of the screen
+ */
+
+#menubar, #menubar ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+}
+
+#menubar li {
+   float: left;
+}
+
+#menubar a:link, #menubar a:visited {
+   display: block;
+   width: 120px;
+   font-weight: bold;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #283746;
+   background-color: #7D8BAE;
+   text-align: center;
+   text-decoration: none;
+   padding: 4px;
+}
+
+#menubar a:hover, #menubar a:active {
+   color: #FFFFFF;
+   background-color: #283746;
+}
+
+#menubar li li {
+   clear: left;
+}
+
+#menubar ul {
+   display: none;
+   position: absolute;
+   z-index: 99;
+}
