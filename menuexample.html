@@ -11,7 +11,23 @@
    <title>Menu Example</title>
    <link rel="stylesheet" href="styles/menu.css">
    <script src="scripts/jquery-3.4.1.min.js"></script>
-   <script src="scripts/menu.js"></script>
+<!--   <script src="scripts/menu.js"></script>-->
+   <script>
+      "use strict";
+
+      $(function(){
+         $("#menubar li").hover(
+                 function(){
+                     $("ul",this).slideDown(200);
+                 },
+                 function(){
+                    $("ul",this).slideUp(200);
+                 }
+         );
+      });
+
+
+   </script>
 </head>
 <body>
    <nav>

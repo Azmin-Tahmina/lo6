@@ -6,6 +6,7 @@
     <title>Frequently Asked Questions</title>
 
     <!-- Add the link to the CSS file for the menu bar here -->
+    <link rel="stylesheet" href="styles/menu.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -16,6 +17,21 @@
 
             /* Add the jQuery code for the menu bar here (or in a separate .js
                file so that it can be shared across multiple pages)  */
+            // $("#menubar li").hover(
+            //     function(){
+            //         $("ul",this).slideDown(100);
+            //     },
+            //     function(){
+            //         $("ul",this).slideUp(100);
+            //     }
+            // );
+
+            $("#menubar li").on("click",function(){
+                // $("ul",this).slideDown(200);
+                $("ul",this).toggle();
+            });
+
+
         } );
     </script>
 </head>
@@ -23,6 +39,21 @@
 <body>
     <nav>
         <!-- Add the nested ul's for the menu bar here -->
+        <ul id="menubar">
+            <li><a href="#">Main1</a>
+                <ul>
+                    <li><a href="#">Sub-1</a></li>
+                    <li><a href="#">Sub-2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Main2</a>
+                <ul>
+                    <li><a href="#">2.1</a></li>
+                    <li><a href="#">2.2</a></li>
+                    <li><a href="#">2.3</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
 
     <h1>Fictional Educational Website, Inc.</h1>

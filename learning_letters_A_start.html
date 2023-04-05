@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Learning Letters - A</title>
+<script src="scripts/jquery-3.4.1.min.js"></script>
 
 <style type="text/css">
     body {
@@ -104,6 +105,89 @@
     <p id="done" class="selected">G O O D<br />
             J O B !!</p>
 </section>
+<script>
+    "use strict"
+
+    $(document).ready(()=>{
+        // 1.	The element with the contents "GOOD JOB!!" should not be displayed when the web page is first loaded.
+        $(".selected").hide();
+        // 2.	When the web page is first loaded, display to the console the number of elements in the page that have the class "target".
+        console.log("Number of target elements: "+ $(".target").length);
+        // 3.	When the user clicks on the yellow box (displaying the letter choices, which currently do nothing),
+        // the yellow box (only) should be hidden immediately
+        $("#choices").on("click",function (){
+            $(this).hide();
+            $("span","#displayChoices").text("+");
+        });
+
+        // 4.	When the user clicks on the orange bar that reads "Letters"
+        // with the yellow box hidden, the yellow box should be displayed again immediately.
+        $("#displayChoices").on("click",function (){
+            $("#choices").toggle();
+
+            if($("span","#displayChoices").text() === "-"){
+                $("span","#displayChoices").text("+");
+            }
+            else
+            {
+                $("span","#displayChoices").text("-");
+            }
+        });
+
+        // 7.	When the user clicks on the instructions header that reads
+        // "Click or touch this letter: A", that header should slide up, taking 1 second to do so.
+
+        $("header","#game").on("click",function(){
+            $(this).slideUp(1000);
+        })
+
+        // 8.	When the user hovers over an element with the class
+        // "target", the specific element that is being hovered over (only) should have a background color
+        // of "lightgreen".The background color should be removed when the user is no longer hovering over the element.
+
+        $(".target").hover(
+            function(){
+                $(this).css("background-color", "lightgreen");
+            },
+            function(){
+                $(this).css("background-color", "");
+            }
+        );
+
+        // 9.	When the user clicks on an element with the class "target", the specific
+        // element that has been clicked should change as follows:
+        //     a.	The content of the element should immediately change to a checkmark (✔, which is Unicode "\u2714")
+        // b.	The class "selected" should immediately be added to the element
+        // c.	The element should fade out slowly
+
+        $(".target").on("click",function (){
+            $(this).text("\u2714").addClass("selected").fadeOut("slow");
+            // 10.	The first time that the user clicks on an element with the class "target", the instructions header
+            // that reads "Click or touch this letter: A" should slide up, taking 1 second to do so (if it has not already done so).
+            $("header","#game").slideUp(1000);
+            // 11.	When all of the elements with the class target have been selected, the div with the id "symbols"
+            // should slide up (at a normal speed), and the element with the contents "GOOD JOB!!"
+            // should slide down, taking 1 second to do so.
+            if ($(".target").length === $(".selected").length - 1) {
+                $("#symbols").slideUp();
+                $("#done").slideDown(1000);
+            }
+        })
+
+        // 12.	When the element with the contents "GOOD JOB!!" is clicked, the web page except for the
+        // yellow box should revert to its initial state (instructions header visible; "GOOD JOB!!" hidden;
+        // symbols displayed; and all elements with the class target showing
+        // their initial contents with their initial appearance).
+        // The yellow box should remain in its current state (hidden or displayed).
+        $("#done").on("click", function() {
+            $(".target").text("A").removeClass("selected").show();
+            $(this).hide();
+            $("#symbols").show();
+            $("header", "#game").show();
+        });
+
+    });
+</script>
 
 </body>
 </html>

@@ -3,15 +3,172 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>jQuery Event Handling</title>
+		<script src="scripts/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="styles/jqueryevents.css"/>
+		<script>
+			"use strict";
+
+			// window.onload = init;
+			//
+			// function init()
+			// {
+			// 	$("#italic").click(function(){
+			// 		alert();
+			// 	});
+			// 	$("#bold").click(clickMe);
+			//
+			// 	function clickMe()
+			// 	{
+			//
+			// 	}
+			// }
+
+
+			$(document).ready(function (){
+
+				let image = new Image();
+				image.src = "media/HappyFaceSmile.jpg";
+				// $("#italic").click(function(){
+				// 	// alert("Hello! from italic");
+				// 	// $("p").css("font-style", "italic");
+				// 	$("p").addClass("special");
+				//
+				// });
+
+				$("#bold").click(clickMe);
+
+
+				$("#undecorate").click(function (){
+					$("p").removeClass("special");
+					$("p").removeClass("bold");
+
+				});
+
+				// $("#firstPara").mouseover(function(){
+				// 	$(this).addClass("green");
+				// });
+				// $("#firstPara").mouseout(function(){
+				// 	$(this).removeClass("green");
+				// });
+				//
+				// $("#firstPara").mouseover(function(){
+				// 	$(this).addClass("green");
+				// });
+				// $("#firstPara").mouseout(function(){
+				// 	$(this).removeClass("green");
+				// });
+				//
+				// // $(selector).hover(inFunction,outFunction)
+				// //
+				// $("#secondPara").hover(
+				// 		function(){
+				// 			$(this).addClass("green");
+				// 		},
+				// 		function(){
+				// 			$(this).removeClass("green");
+				// 		}
+				// );
+				//
+				// $("#secondPara").on("click",function ()
+				// {
+				// 	$(this).addClass("green");
+				// });
+				//
+				// $("#secondPara").off("click")
+				//
+
+				$("#firstPara").on("click",function(){
+					$(this).addClass("invisible");
+					$("#secondPara").removeClass("invisible");
+				});
+
+				$("#secondPara").on("click",function(){
+					$(this).addClass("invisible");
+					$("#firstPara").removeClass("invisible");
+				});
+
+				$("#reset").click(function(){
+					// $("#firstPara").removeClass("invisible");
+					// $("#secondPara").removeClass("invisible");
+					$("#firstPara").off();
+					$("#secondPara").off();
+					$("#secondPara").removeClass("invisible");
+					$("#firstPara").removeClass("invisible");
+				});
+
+
+				$("#italic").click(function(){
+					// alert("Hello! from italic");
+					// $("p").css("font-style", "italic");
+					// $("p").addClass("special");
+					if($(this).text() === "Italic")
+					{
+						$("p").addClass("special");
+						$(this).html("<strong>Un</strong>Italic");
+					}
+					else
+					{
+						$("p").removeClass("special");
+						$(this).html("Italic");
+					}
+				});
+
+				$("#newbtn").click(
+						function (){
+							$("#happy").attr("src","media/HappyFaceSmile.jpg").attr("alt","Happy Face")
+							$(this).val("Done!").attr("disabled",true);
+						}
+				);
+
+				$("#happy").hover(
+						function (){
+							$(this).attr("src","media/HappyFaceSmile.jpg").attr("alt","Happy Face")
+						},
+						function (){
+							$(this).attr("src","media/HappyFaceNoSmile.jpg").attr("alt","Apathetic Face")
+						}
+				);
+
+
+
+
+
+
+
+
+
+			});
+
+			// $(function(){
+			//
+			// });
+
+			function clickMe()
+			{
+				// alert("Hello! from bold");
+				// $("p").removeAttr("style");
+				// $("p").removeClass("special");
+				// $("p").css("font-style", "bold");
+				$("p").addClass("bold");
+
+
+			}
+
+
+		</script>
     </head>
 
 	<body>
 		<h1>jQuery Event Handling Demo</h1>
-		
+		<img id="happy" height="273" width="274" >
 		<div>
 			<button id="italic">Italic</button>
 			<button id="bold">Bold</button>
 			<button id="undecorate">Undecorate</button>
+			<button id="reset">Remove Style</button>
+			<button id="newbtn">New Button</button>
+
+
 		</div>
 		
 		<p id="firstPara">First paragraph</p>

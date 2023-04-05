@@ -3,6 +3,48 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Fun Effects with Einstein</title>
+		<script src="scripts/jquery-3.4.1.min.js"></script>
+		<script>
+			"use strict";
+
+			$(function(){
+				let einsteinImage = $("#einstein");
+
+				$("#hide").on("click",()=>einsteinImage.hide("slow"));
+				$("#show").on("click",()=>einsteinImage.show("fast"));
+				$("#toggle").on("click",()=> einsteinImage.toggle(500));
+				$("#fadeout").on("click",()=> einsteinImage.fadeOut())
+				$("#fadein").on("click",()=> einsteinImage.fadeIn())
+				// $("#slideup").on("click",()=> einsteinImage.slideUp("fast"))
+				// $("#slidedown").on("click",()=> einsteinImage.slideDown("slow"))
+				// $("#slidetoggle").on("click",()=> einsteinImage.slideToggle(1000))
+
+				$("#slideup").on("click",function(){
+					einsteinImage.slideUp("fast");
+					$("h1").slideUp("fast");
+				});
+
+				$("#slidedown").on("click",function(){
+					einsteinImage.slideDown("slow");
+					$("h1").slideDown("slow");
+				});
+
+				$("#slidetoggle").on("click",function(){
+					einsteinImage.slideToggle("1000");
+					$("h1:first").slideToggle("1000");
+				});
+			});
+
+			// multiple selector of jquery
+			// https://www.educba.com/jquery-multiple-selectors/
+			// $( "selector1, selector2, … selectorN ")
+			// $("p, div")
+			// $(".p2, .div1, .span1")
+			// $("#pid1, #divid1, #spanid1")
+			// $("p, .div1, #spanid1")
+			// $("p, .div1, #spanid1",this)
+
+		</script>
 	</head>
 
 	<body>
